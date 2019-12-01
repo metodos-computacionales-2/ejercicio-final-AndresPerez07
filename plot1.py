@@ -36,7 +36,7 @@ plt.savefig("omega_vs_theta.png")
 fig3 = plt.figure(figsize=(15,15))
 for i in range(4):
     ax = fig3.add_subplot(2,2,i+1)
-    ax.semilogy(p[i][:,0],p_delta[i][:,1] - p[i][:,1],marker="+", label="Fd={}".format(Fd[i]))
+    ax.semilogy(p[i][:,0],np.abs(p_delta[i][:,1] - p[i][:,1]),marker="+", label="Fd={}".format(Fd[i]))
     ax.set_xlabel(u"$time$")
     ax.set_ylabel("$\Delta\Theta$")
     ax.legend()
