@@ -76,10 +76,10 @@ int main(int argc, char** argv)
       }
     file2.close();
   }
-  double deltaF = 0.01;
+  double deltaF = 0.0001;
   double Fuerza = 1.35;
   double deltaTheta = 0.01;
-  int N_bif = 10000;
+  int N_bif = 100000;
 
   std::ofstream file3;
   file3.open("bifurcacion.dat");
