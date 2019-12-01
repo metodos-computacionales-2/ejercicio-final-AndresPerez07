@@ -76,6 +76,30 @@ int main(int argc, char** argv)
       }
     file2.close();
   }
+  double deltaF = 0.01;
+  double Fuerza = 1.35;
+  double deltaTheta = 0.01;
+  int N_bif = 10000;
+
+  std::ofstream file3;
+  file3.open("bifurcacion.dat");
+  while(Fuerza < 1.5){
+    theta_0 = 0.01;
+    while(theta_0 < 1.0){
+      t = 0.0;
+      initial_conditions(p,theta_0, 0.0, Fuerza);
+      for (int ii=1; ii<=N_bif; ii++)
+        {
+          euler_cromer(p,dt,t);
+          t+=dt;
+        }
+        file3 << Fuerza << "\t" << p.Theta << std::endl;
+        theta_0 = theta_0 + deltaTheta;
+    }
+
+    Fuerza = Fuerza + deltaF;
+  }
+  file3.close();
 
   delete []FD;
   return 0;

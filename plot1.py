@@ -66,3 +66,7 @@ for i in range(4):
     ax.set_ylabel("$\Delta\Theta$")
     ax.legend()
 plt.savefig("lyapunov.png")
+#%%
+
+bifurcacion = np.loadtxt("bifurcacion.dat")
+plt.scatter(bifurcacion[:,0], bifurcacion[:,1], s=5)
