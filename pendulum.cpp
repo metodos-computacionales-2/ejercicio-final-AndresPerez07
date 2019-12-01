@@ -64,6 +64,17 @@ int main(int argc, char** argv)
         t+=dt;
       }
     file.close();
+    t = 0.0;
+    initial_conditions(p,theta_0, 0.05, FD[jj]);
+    std::ofstream file2;
+    file2.open("data_"+std::to_string(FD[jj])+"_delta.dat");
+    for (int ii=1; ii<=N; ii++)
+      {
+        euler_cromer(p,dt,t);
+        file2 << t << "\t" << p.Theta << "\t" << p.W  << std::endl;
+        t+=dt;
+      }
+    file2.close();
   }
 
   delete []FD;
